@@ -1,0 +1,5 @@
+mdtoc
+a.out
+.*
+lib/*.h.*
+!.gitignore
