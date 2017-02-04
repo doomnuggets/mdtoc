@@ -5,16 +5,31 @@ Simple table of contents generator for GitHub flavored markdown files.
 
 ## Installation
 
-1. Clone the repository
+**Clone the repository**
 
 ```bash
 git clone https://github.com/doomnuggets/mdtoc.git
 ```
 
-2. Compile it from source
+**Move your horses**
 
-You can run `make` to build it and test it out afterwards, or you can execute `sudo make
-install` to build it and end up with a copy of it in `/usr/bin/mdtoc`.
+```
+cd mdtoc
+```
+
+**Compile from source**
+
+If you'd like to call `mdtoc` from anywhere on your system use:
+
+```bash
+make install
+```
+
+Or, if you only want to test it out for now:
+
+```bash
+make
+```
 
 
 ## Generating a table of contents
