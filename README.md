@@ -7,13 +7,13 @@ Simple table of contents generator for GitHub flavored markdown files.
 
 **Clone the repository**
 
-```bash
+```shell
 git clone https://github.com/doomnuggets/mdtoc.git
 ```
 
 **Move your horses**
 
-```
+```shell
 cd mdtoc
 ```
 
@@ -21,13 +21,13 @@ cd mdtoc
 
 If you'd like to call `mdtoc` from anywhere on your system use:
 
-```bash
+```shell
 make install
 ```
 
 Or, if you only want to test it out for now:
 
-```bash
+```shell
 make
 ```
 
@@ -36,19 +36,19 @@ make
 
 You can either pass the file to read from like so:
 
-```
+```shell
 mdtoc file.md
 ```
 
 Or you can pipe to `mdtoc`:
 
-```
+```shell
 cat ~/file.md | mdtoc
 ```
 
 ### Example
 
-```
+```shell
 doom@nuggets:~/code/c/mdtoc: ./mdtoc README.md
 + [mdtoc](#mdtoc)
   + [Installation](#installation)
