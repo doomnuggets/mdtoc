@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-
     FILE *fp = NULL;
     if(argc == 1)
     {
@@ -53,15 +52,21 @@ int main(int argc, char *argv[])
 
     struct Title *first_title = NULL;
     struct Title *previous_title = NULL;
+    int in_code_block = 0;
     while(feof(fp) == 0)
     {
         wchar_t current_line[MAX_LINE] = {L'\0'};
         wchar_t *current_line_ptr = current_line;
-
         while(fgetws(current_line, MAX_LINE, fp) != NULL)
         {
             current_line[wcslen(current_line)-1] = L'\0';
-
+            if(wcsstr(current_line, L"```") != NULL)
+            {
+                if(in_code_block)
+                    in_code_block = 0;
+                else
+                    in_code_block = 1;
+            }
             int title_level = count_title_level(current_line_ptr);
             if(title_level == 0)
             {
@@ -69,6 +74,14 @@ int main(int argc, char *argv[])
             }
 
             wchar_t *title = extract_title(current_line_ptr);
+            if(title == NULL)
+            {
+                continue;
+            }
+            else if(in_code_block)
+            {
+                continue;
+            }
             wchar_t *anchor = calloc(MAX_ANCHOR, sizeof(wchar_t));
             to_anchor(title, anchor);
 

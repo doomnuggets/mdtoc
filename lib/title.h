@@ -54,9 +54,7 @@ void unique_anchor(struct Title *first_title, struct Title *new_title)
     free(tmp_anchor);
 }
 
-/*
- * Builds a new title struct with the passed args.
- */
+// Builds a new title struct with the passed args.
 struct Title *create_title(struct Title *previous, int indent_level, wchar_t *title, wchar_t *anchor)
 {
     struct Title *t = malloc(sizeof(struct Title));
@@ -74,7 +72,7 @@ struct Title *create_title(struct Title *previous, int indent_level, wchar_t *ti
     return t;
 }
 
-/* Iterates over all titles in the linked list and frees all allocated resources. */
+// Iterates over all titles in the linked list and frees all allocated resources.
 void free_titles(struct Title *first_title)
 {
     struct Title *current_title = first_title;
@@ -88,15 +86,13 @@ void free_titles(struct Title *first_title)
 }
 
 /* This counts how many '#' are in front of the actual title. It is used to indent
- * the entry of the table of contents.
+ * the entry in the table of contents.
  */
 int count_title_level(wchar_t *line)
 {
     int title_level = 0;
-    while(line[title_level] == '#')
+    while(line[title_level] == '#' && title_level <= 6)
     {
-        if(title_level == 6)
-            break;
         title_level++;
     }
     return title_level;
@@ -106,7 +102,7 @@ int count_title_level(wchar_t *line)
 wchar_t *extract_title(wchar_t *line)
 {
     int title_index = 0;
-    while((line[title_index] == '#' || line[title_index] == ' ') && line[title_index] != '\0')
+    while((line[title_index] == L'#' || line[title_index] == L' ') && line[title_index] != '\0')
     {
         title_index++;
     }
